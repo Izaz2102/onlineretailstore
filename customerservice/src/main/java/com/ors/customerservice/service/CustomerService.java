@@ -56,4 +56,7 @@ public class CustomerService {
             return customerDTOList;
         }
     }
+    public void deleteCustomerById(UUID customerId) {
+        customerRepository.deleteById(customerId);
+    }
 }

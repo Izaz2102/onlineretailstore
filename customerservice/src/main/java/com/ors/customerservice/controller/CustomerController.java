@@ -42,4 +42,14 @@ public class CustomerController {
     public List<CustomerDTO> getAllCustomers() throws NotFoundException {
         return customerService.getAllCustomers();
     }
+    @DeleteMapping("/deleteCustomerById/{customerId}")
+    public String deleteCustomerById(@PathVariable("customerId") String customerId) throws NotFoundException {
+        Optional<Customer> customer = customerService.getCustomerById(UUID.fromString(customerId));
+        if (customer.isPresent()) {
+            customerService.deleteCustomerById(UUID.fromString(customerId));
+            return "Customer deleted successfully";
+        }else {
+            throw new NotFoundException("Specified Customer not found");
+        }
+    }
 }
