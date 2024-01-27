@@ -22,7 +22,7 @@ public class CustomerAddress {
     private String city;
     private String pinCode;
 
-    @OneToOne(mappedBy="customerAddress")
-    private Customer customer;
+    //@OneToOne(mappedBy="customerAddress")
+    //private Customer customer;
 }
 
