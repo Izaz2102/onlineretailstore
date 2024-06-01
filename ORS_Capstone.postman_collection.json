@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "cbe61d70-bee5-4627-a564-20293d834059",
+		"name": "ORS_Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14998524"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "addCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\": \"azeema\",\r\n    \"customerEmail\": \"azeema@gmail.com\",\r\n    \"customerBillingAddress\": \"azeema\",\r\n    \"customerShippingAddress\": \"azeema\",\r\n    \"customerAddressList\" : [\r\n        {\r\n            \"doorNo\": \"8-4-369-333\",\r\n            \"streetName\": \"SITE 3\",\r\n            \"layoutName\": \"azeema 1\",\r\n            \"city\" : \"azeema 1\",\r\n            \"pinCode\" : \"500018\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/ors/v1/customers/addCustomer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"ors",
+								"v1",
+								"customers",
+								"addCustomer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/ors/v1/customers/getCustomerById/8cf3d797-fdc0-4906-9984-79279f4654b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"ors",
+								"v1",
+								"customers",
+								"getCustomerById",
+								"8cf3d797-fdc0-4906-9984-79279f4654b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/ors/v1/customers/getAllCustomers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"ors",
+								"v1",
+								"customers",
+								"getAllCustomers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/ors/v1/customers/deleteCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"ors",
+								"v1",
+								"customers",
+								"deleteCustomerById",
+								"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomerById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"customerId\": \"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d\",\r\n        \"customerName\": \"azeema 3\",\r\n        \"customerEmail\": \"azeema3@gmail.com\",\r\n        \"customerBillingAddress\": \"azeema 3\",\r\n        \"customerShippingAddress\": \"azeema 3\",\r\n        \"customerAddressList\": [\r\n            {\r\n                \"customerAddressId\": \"f07f952f-cce2-494b-bfd5-9aea9eecee0c\",\r\n                \"doorNo\": \"8-4-369-333\",\r\n                \"streetName\": \"SITE 3\",\r\n                \"layoutName\": \"azeema 3\",\r\n                \"city\": \"azeema 3\",\r\n                \"pinCode\": \"500018\"\r\n            }\r\n        ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/ors/v1/customers/updateCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"ors",
+								"v1",
+								"customers",
+								"updateCustomerById",
+								"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
