@@ -3,14 +3,13 @@ package com.ors.customerservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Customer {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,7 +19,15 @@ public class Customer {
     private String customerBillingAddress;
     private String customerShippingAddress;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "customerAddressId")
-    private CustomerAddress customerAddress;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cid_fk", referencedColumnName = "customerId")
+    private List<CustomerAddress> customerAddressList = new ArrayList<>();
+    public Customer(String customerName, String customerEmail, String customerBillingAddress, String customerShippingAddress, List<CustomerAddress> customerAddressList) {
+        super();
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerBillingAddress = customerBillingAddress;
+        this.customerShippingAddress = customerShippingAddress;
+        this.customerAddressList = customerAddressList;
+    }
 }

@@ -9,15 +9,17 @@ spring:
       #password: customer
       #driver-class-name: org.h2.Driver
 
-      #url: jdbc:mysql://localhost:3306/onlineretailstore
-      #driver-class-name: com.mysql.cj.jdbc.Driver
-
-      url: jdbc:mysql://mydatabase.clgwgw628igj.us-east-1.rds.amazonaws.com:3306/onlineretailstore
+      url: jdbc:mysql://localhost:3306/onlineretailstore
       username: orsuser
+      #password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
+
+      #url: jdbc:mysql://mydatabase.clgwgw628igj.us-east-1.rds.amazonaws.com:3306/onlineretailstore
+      #username: orsuser
+      #driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     #database-platform: org.hibernate.dialect.H2Dialect
-    #database-platform: org.hibernate.dialect.Mysql5Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
     defer-datasource-initialization: true
     show-sql: true
     hibernate:
