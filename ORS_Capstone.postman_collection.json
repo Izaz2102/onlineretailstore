@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "cbe61d70-bee5-4627-a564-20293d834059",
 		"name": "ORS_Capstone",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "14998524"
 	},
 	"item": [
@@ -23,20 +23,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8001/ors/v1/customers/addCustomer",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"ors",
-								"v1",
-								"customers",
-								"addCustomer"
-							]
-						}
+						"url": "http://localhost:8001/ors/api/v1/customers/addCustomer"
 					},
 					"response": []
 				},
@@ -45,21 +32,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/ors/v1/customers/getCustomerById/8cf3d797-fdc0-4906-9984-79279f4654b0",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"ors",
-								"v1",
-								"customers",
-								"getCustomerById",
-								"8cf3d797-fdc0-4906-9984-79279f4654b0"
-							]
-						}
+						"url": "http://localhost:8001/ors/api/v1/customers/getCustomerById/8cf3d797-fdc0-4906-9984-79279f4654b0"
 					},
 					"response": []
 				},
@@ -68,20 +41,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/ors/v1/customers/getAllCustomers",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"ors",
-								"v1",
-								"customers",
-								"getAllCustomers"
-							]
-						}
+						"url": "http://localhost:8001/ors/api/v1/customers/getAllCustomers"
 					},
 					"response": []
 				},
@@ -90,21 +50,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8001/ors/v1/customers/deleteCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"ors",
-								"v1",
-								"customers",
-								"deleteCustomerById",
-								"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
-							]
-						}
+						"url": "http://localhost:8001/ors/api/v1/customers/deleteCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
 					},
 					"response": []
 				},
@@ -122,25 +68,15 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:8001/ors/v1/customers/updateCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8001",
-							"path": [
-								"ors",
-								"v1",
-								"customers",
-								"updateCustomerById",
-								"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
-							]
-						}
+						"url": "http://localhost:8001/ors/api/v1/customers/updateCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Product",
+			"item": []
 		}
 	]
 }
