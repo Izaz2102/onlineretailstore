@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RequestMapping("/ors/v1/customers")
+@RequestMapping("/ors/api/v1/customers")
 @RestController
 public class CustomerController {
     private final CustomerService customerService;
