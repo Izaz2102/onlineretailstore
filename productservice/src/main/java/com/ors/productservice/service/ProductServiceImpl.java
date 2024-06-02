@@ -1,2 +1,4 @@
-package com.ors.productservice.service;public class ProductServiceImpl {
+package com.ors.productservice.service;
+
+public class ProductServiceImpl {
 }
