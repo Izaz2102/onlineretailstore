@@ -6,6 +6,8 @@ import com.ors.customerservice.entity.CustomerAddress;
 import com.ors.customerservice.exceptions.NotFoundException;
 import com.ors.customerservice.service.CustomerAddressService;
 import com.ors.customerservice.service.CustomerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,9 +41,11 @@ public class CustomerController {
         }
     }
     @GetMapping("/getAllCustomers")
-    //public List<CustomerDTO> getAllCustomers() throws NotFoundException {//2024
     public List<Customer> getAllCustomers() throws NotFoundException {
+    //public ResponseEntity<HttpStatus> getAllCustomers() throws NotFoundException {
         return customerService.getAllCustomers();
+        //customerService.getAllCustomers();
+        //return ResponseEntity.ok(HttpStatus.CREATED);
     }
     @DeleteMapping("/deleteCustomerById/{customerId}")
     public String deleteCustomerById(@PathVariable("customerId") UUID customerId) throws NotFoundException {

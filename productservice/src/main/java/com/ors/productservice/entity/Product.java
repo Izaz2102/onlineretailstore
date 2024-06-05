@@ -1,18 +1,21 @@
 package com.ors.productservice.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.UUID;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "product")
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
-    @Column(name = "id", nullable = false)
     @GeneratedValue(generator = "UUID")
-    private Long id;
+    private UUID productId;
 
     @Column(name = "product_name")
     private String productName;
