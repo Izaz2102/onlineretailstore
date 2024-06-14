@@ -1,4 +1,6 @@
 com\ors\customerservice\entity\Customer.class
+com\ors\customerservice\service\CustomerAddressService.class
+com\ors\customerservice\repository\CustomerAddressRepository.class
 com\ors\customerservice\exceptions\NotFoundException.class
 com\ors\customerservice\controller\CustomerController.class
 com\ors\customerservice\repository\CustomerRepository.class
@@ -6,3 +8,4 @@ com\ors\customerservice\CustomerServiceApplication.class
 com\ors\customerservice\service\CustomerService.class
 com\ors\customerservice\entity\CustomerAddress.class
 com\ors\customerservice\dtos\CustomerDTO.class
+com\ors\customerservice\service\CustomerAddressServiceImpl.class

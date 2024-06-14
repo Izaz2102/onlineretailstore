@@ -32,7 +32,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8001/ors/api/v1/customers/getCustomerById/8cf3d797-fdc0-4906-9984-79279f4654b0"
+						"url": "http://localhost:8001/ors/api/v1/customers/getCustomerById/3d59c7fa-cf18-45b6-9e27-42876151eddc"
 					},
 					"response": []
 				},
@@ -50,7 +50,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://localhost:8001/ors/api/v1/customers/deleteCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
+						"url": "http://localhost:8001/ors/api/v1/customers/deleteCustomerById/5dcd738a-9b29-4ba4-b5cb-49ff09f0702d"
 					},
 					"response": []
 				},
@@ -61,14 +61,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"customerId\": \"53f8f6d6-0d1c-48cb-8b8a-13c80325b95d\",\r\n        \"customerName\": \"azeema 3\",\r\n        \"customerEmail\": \"azeema3@gmail.com\",\r\n        \"customerBillingAddress\": \"azeema 3\",\r\n        \"customerShippingAddress\": \"azeema 3\",\r\n        \"customerAddressList\": [\r\n            {\r\n                \"customerAddressId\": \"f07f952f-cce2-494b-bfd5-9aea9eecee0c\",\r\n                \"doorNo\": \"8-4-369-333\",\r\n                \"streetName\": \"SITE 3\",\r\n                \"layoutName\": \"azeema 3\",\r\n                \"city\": \"azeema 3\",\r\n                \"pinCode\": \"500018\"\r\n            }\r\n        ]\r\n    }",
+							"raw": "{\r\n        \"customerId\": \"3d59c7fa-cf18-45b6-9e27-42876151eddc\",\r\n        \"customerName\": \"azeema izaz\",\r\n        \"customerEmail\": \"azeemaizaz@gmail.com\",\r\n        \"customerBillingAddress\": \"azeema izaz\",\r\n        \"customerShippingAddress\": \"azeema izaz\",\r\n        \"customerAddressList\": [\r\n            {\r\n                \"customerAddressId\": \"27e9a12a-2d0f-4f72-86d6-a943b71b886f\",\r\n                \"doorNo\": \"8-4-369-333\",\r\n                \"streetName\": \"SITE 3\",\r\n                \"layoutName\": \"azeema izaz1\",\r\n                \"city\": \"azeema izaz1\",\r\n                \"pinCode\": \"500018\"\r\n            }\r\n        ]\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8001/ors/api/v1/customers/updateCustomerById/53f8f6d6-0d1c-48cb-8b8a-13c80325b95d"
+						"url": "http://localhost:8001/ors/api/v1/customers/updateCustomerById/3d59c7fa-cf18-45b6-9e27-42876151eddc"
 					},
 					"response": []
 				}
@@ -76,7 +76,146 @@
 		},
 		{
 			"name": "Product",
-			"item": []
+			"item": [
+				{
+					"name": "addProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Samsung\",\r\n    \"productDescription\": \"Samsung Max Pro\",\r\n    \"productPrice\": \"50000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8002/ors/api/v1/products/addProduct"
+					},
+					"response": []
+				},
+				{
+					"name": "getProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8002/ors/api/v1/products/getProductById/78b832d6-af99-4692-acf8-e1d52fdd5207"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllProducts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": "http://localhost:8002/ors/api/v1/products/getAllProducts"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProductById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8002/ors/api/v1/products/deleteProductById/78b832d6-af99-4692-acf8-e1d52fdd5207"
+					},
+					"response": []
+				},
+				{
+					"name": "updateProductById",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Samsung 333\",\r\n    \"productDescription\": \"Samsung Max Pro 333\",\r\n    \"productPrice\": \"333\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8002/ors/api/v1/products/updateProductById/ef25632a-7186-4569-b2f9-39cdfe39e93f"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "addInventory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"ef25632a-7186-4569-b2f9-39cdfe39e93f\",\r\n    \"quantity\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8003/ors/api/v1/inventory/addInventory"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllInventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8003/ors/api/v1/inventory/getAllInventory"
+					},
+					"response": []
+				},
+				{
+					"name": "getInventory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8003/ors/api/v1/inventory/getInventory/62eac6b0-b79f-4139-a98b-fd3992f0bfe6"
+					},
+					"response": []
+				},
+				{
+					"name": "updateInventory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"inventoryId\": \"62eac6b0-b79f-4139-a98b-fd3992f0bfe6\",\r\n        \"productId\": \"ef25632a-7186-4569-b2f9-39cdfe39e93f\",\r\n        \"quantity\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8003/ors/api/v1/inventory/updateInventory/62eac6b0-b79f-4139-a98b-fd3992f0bfe6"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteInventory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8003/ors/api/v1/inventory/deleteInventory/62eac6b0-b79f-4139-a98b-fd3992f0bfe6"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
