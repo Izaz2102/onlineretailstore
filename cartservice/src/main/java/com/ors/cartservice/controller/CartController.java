@@ -15,8 +15,8 @@ public class CartController {
     private CartService cartService;
 
     @PostMapping("/addCart")
-    public Cart addCart() {
-        return cartService.addCart();
+    public Cart addCart(@RequestBody Cart cart) {
+        return cartService.addCart(cart);
     }
     @GetMapping("/getCart")
     public Cart getCart(@PathVariable("cartId") UUID cartId){

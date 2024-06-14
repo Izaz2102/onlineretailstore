@@ -23,6 +23,6 @@ public class LineItem {
     private double price;
     @ManyToOne
     @JoinColumn(name = "cart_id")
-    //@JsonIgnore
+    @JsonIgnore
     private Cart cart;
 }

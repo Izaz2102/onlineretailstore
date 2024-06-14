@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 public interface CartService {
-    Cart addCart();
+    Cart addCart(Cart cart);
 
     Cart getCart(UUID cartId);
 

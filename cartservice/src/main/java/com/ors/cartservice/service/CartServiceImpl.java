@@ -4,9 +4,11 @@ import com.ors.cartservice.entity.Cart;
 import com.ors.cartservice.entity.LineItem;
 import com.ors.cartservice.exceptions.EntityNotFoundException;
 import com.ors.cartservice.repository.CartRepository;
+import com.ors.cartservice.repository.LineItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -15,9 +17,18 @@ public class CartServiceImpl implements CartService{
 
     @Autowired
     private CartRepository cartRepository;
+    @Autowired
+    private LineItemRepository lineItemRepository;
     @Override
-    public Cart addCart() {
-        return cartRepository.save(new Cart());
+    public Cart addCart(Cart cart) {
+        List<Cart> cartList = cartRepository.findAll();
+        if (!cartList.isEmpty()) {
+            return cartList.get(0);
+        }else {
+            LineItem lineItem = cart.getLineItemsList().get(0);
+            lineItemRepository.save(lineItem);
+            return cartRepository.save(new Cart());
+        }
     }
 
     @Override
