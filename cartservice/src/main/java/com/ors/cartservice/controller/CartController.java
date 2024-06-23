@@ -18,7 +18,7 @@ public class CartController {
     public Cart addCart(@RequestBody Cart cart) {
         return cartService.addCart(cart);
     }
-    @GetMapping("/getCart")
+    @GetMapping("/getCart/{cartId}")
     public Cart getCart(@PathVariable("cartId") UUID cartId){
         return cartService.getCart(cartId);
     }
@@ -28,7 +28,7 @@ public class CartController {
         return "Cart deleted successfully";
     }
     @PutMapping("/updateCart/{cartId}")
-    public Cart updateCart(@PathVariable("cartId") UUID cartId, @RequestBody LineItem lineItem) {
-        return cartService.updateCart(cartId, lineItem);
+    public Cart updateCart(@PathVariable("cartId") UUID cartId, @RequestBody Cart cart) {
+        return cartService.updateCart(cartId, cart);
     }
 }

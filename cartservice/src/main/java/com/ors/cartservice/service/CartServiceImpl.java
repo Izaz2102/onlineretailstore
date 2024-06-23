@@ -5,12 +5,14 @@ import com.ors.cartservice.entity.LineItem;
 import com.ors.cartservice.exceptions.EntityNotFoundException;
 import com.ors.cartservice.repository.CartRepository;
 import com.ors.cartservice.repository.LineItemRepository;
+import org.hibernate.boot.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CartServiceImpl implements CartService{
@@ -22,12 +24,24 @@ public class CartServiceImpl implements CartService{
     @Override
     public Cart addCart(Cart cart) {
         List<Cart> cartList = cartRepository.findAll();
+        //List<LineItem> existngLineItemList = lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0)).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId()));
+        Metadata UUIDConverter = null;
+        Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(UUIDConverter.getUUID()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
+
+        List<LineItem> lineItemsList = cart.getLineItemsList();
+
         if (!cartList.isEmpty()) {
             return cartList.get(0);
-        }else {
-            LineItem lineItem = cart.getLineItemsList().get(0);
-            lineItemRepository.save(lineItem);
-            return cartRepository.save(new Cart());
+        }else if(existngLineItemList.isEmpty()){
+            for(LineItem lineItem : lineItemsList) {
+                lineItemRepository.save(lineItem);
+            }
+            return cartRepository.save(cart);
+        }else{
+            for(LineItem lineItem : lineItemsList) {
+                lineItemRepository.save(lineItem);
+            }
+            return cartList.get(0);
         }
     }
 
@@ -47,10 +61,15 @@ public class CartServiceImpl implements CartService{
     }
 
     @Override
-    public Cart updateCart(UUID cartId, LineItem lineItem) {
-        Cart cart = cartRepository.findById(cartId).orElseThrow(() -> new EntityNotFoundException("Cart not found"));
-        cart.getLineItemsList().add(lineItem);
-        lineItem.setCart(cart);
+    public Cart updateCart(UUID cartId, Cart cart) {
+        LineItem updatedLineItem = lineItemRepository.findById(cart.getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found"));
+
+        updatedLineItem.setProductId(cart.getLineItemsList().get(0).getProductId());
+        updatedLineItem.setProductName(cart.getLineItemsList().get(0).getProductName());
+        updatedLineItem.setQuantity(cart.getLineItemsList().get(0).getQuantity());
+        updatedLineItem.setPrice(cart.getLineItemsList().get(0).getPrice());
+
+        lineItemRepository.save(updatedLineItem);
         return cartRepository.save(cart);
     }
 }

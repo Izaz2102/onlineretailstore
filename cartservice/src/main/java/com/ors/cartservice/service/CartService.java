@@ -15,5 +15,5 @@ public interface CartService {
 
     void deleteCartById(UUID cartId);
 
-    Cart updateCart(UUID cartId, LineItem lineItem);
+    Cart updateCart(UUID cartId, Cart cart);
 }

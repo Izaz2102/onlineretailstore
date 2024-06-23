@@ -60,14 +60,11 @@ public class CustomerController {
     }
     @PutMapping("/updateCustomerById/{customerId}")
     public Customer updateCustomerById(@PathVariable("customerId") UUID customerId, @RequestBody Customer customer) throws NotFoundException {
-        /*Optional<Customer> customer1 = customerService.getCustomerById(UUID.fromString(customerId));
+        Optional<Customer> customer1 = customerService.getCustomerById(customerId);
         if (customer1.isPresent()) {
-            customer.setCustomerId(UUID.fromString(customerId));
-            customerAddressService.updateCustomerAddressById(customer1.get().getCustomerAddress().getCustomerAddressId(), customer1.getCustomerAddress());
-            return customerService.addCustomer(customer);
+            return customerService.updateCustomer(customerId,customer);
         }else {
             throw new NotFoundException("Specified Customer not found");
-        }*/
-        return customerService.updateCustomer(customerId,customer);
+        }
     }
 }

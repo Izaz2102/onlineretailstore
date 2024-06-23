@@ -11,7 +11,6 @@ import java.util.UUID;
 @Setter
 @Getter
 @AllArgsConstructor
-@ToString
 public class LineItem {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -21,8 +20,7 @@ public class LineItem {
     private String productName;
     private int quantity;
     private double price;
-    @ManyToOne
-    @JoinColumn(name = "cart_id")
-    @JsonIgnore
-    private Cart cart;
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "cart")
+//    private Cart cart;
 }

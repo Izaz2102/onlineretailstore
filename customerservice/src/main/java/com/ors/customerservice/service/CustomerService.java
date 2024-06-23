@@ -25,8 +25,14 @@ public class CustomerService {
     }
 
     public Customer addCustomer(Customer customer) {
-        CustomerAddress customerAddress = customer.getCustomerAddressList().get(0);
-        customerAddressRepository.save(customerAddress);
+        //CustomerAddress customerAddress = customer.getCustomerAddressList().get(0);
+        //customerAddressRepository.save(customerAddress);
+        //customerRepository.save(customer);
+
+        List<CustomerAddress> customerAddressList = customer.getCustomerAddressList();
+        for(CustomerAddress customerAddress : customerAddressList) {
+            customerAddressRepository.save(customerAddress);
+        }
         customerRepository.save(customer);
 
         return customer;
