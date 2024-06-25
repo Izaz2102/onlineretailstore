@@ -22,6 +22,6 @@ public class Cart {
     /*@OneToMany(mappedBy = "cart")
     @Fetch(FetchMode.SELECT)*/
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cid_fk", referencedColumnName = "cartId")
+    //@JoinColumn(name = "cid_fk", referencedColumnName = "cartId")
     private List<LineItem> lineItemsList = new ArrayList<>();
 }

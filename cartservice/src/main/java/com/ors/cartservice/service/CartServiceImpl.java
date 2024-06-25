@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.*;
+//import org.springframework.integration.util.UUIDConverter;
 
 @Service
 public class CartServiceImpl implements CartService{
@@ -24,25 +24,34 @@ public class CartServiceImpl implements CartService{
     @Override
     public Cart addCart(Cart cart) {
         List<Cart> cartList = cartRepository.findAll();
-        //List<LineItem> existngLineItemList = lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0)).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId()));
-        Metadata UUIDConverter = null;
-        Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(UUIDConverter.getUUID()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
+        //List<LineItem> existngLineItemList = lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId()));
+        //Metadata UUIDConverter = null;
+        //UUID uuid = Converter.convert(cartList.get(0).getLineItemsList().get(0).getLineItemId());
+        //Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(UUIDConverter.getUUID(cartList.get(0).getLineItemsList().get(0))).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
 
-        List<LineItem> lineItemsList = cart.getLineItemsList();
+        //Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
+        Optional<LineItem> existngLineItemList = Optional.empty();
+        if(!cartList.isEmpty()){
+            existngLineItemList = Optional.ofNullable(lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
+        }
+
+        List<LineItem> toBeAddedLineItemsList = cart.getLineItemsList();
 
         if (!cartList.isEmpty()) {
+            //cartList.get(0).getCartId();
+
+            for(LineItem lineItem : toBeAddedLineItemsList) {
+                //lineItem.setCartId(cartList.get(0).getCartId());
+                lineItemRepository.save(lineItem);
+            }
             return cartList.get(0);
         }else if(existngLineItemList.isEmpty()){
-            for(LineItem lineItem : lineItemsList) {
+            for(LineItem lineItem : toBeAddedLineItemsList) {
                 lineItemRepository.save(lineItem);
             }
             return cartRepository.save(cart);
-        }else{
-            for(LineItem lineItem : lineItemsList) {
-                lineItemRepository.save(lineItem);
-            }
-            return cartList.get(0);
         }
+        return cartList.get(0);
     }
 
     @Override

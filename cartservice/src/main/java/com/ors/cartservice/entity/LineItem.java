@@ -20,7 +20,8 @@ public class LineItem {
     private String productName;
     private int quantity;
     private double price;
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "cart")
-//    private Cart cart;
+
+    //@ManyToOne(cascade = CascadeType.PERSIST)
+    //@JoinColumn(name = "cart")
+    //private Cart cart;
 }
