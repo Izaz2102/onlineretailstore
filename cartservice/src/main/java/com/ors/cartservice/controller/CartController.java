@@ -20,6 +20,7 @@ public class CartController {
     }
     @GetMapping("/getCart/{cartId}")
     public Cart getCart(@PathVariable("cartId") UUID cartId){
+
         return cartService.getCart(cartId);
     }
     @DeleteMapping("/deleteCartById/{cartId}")
