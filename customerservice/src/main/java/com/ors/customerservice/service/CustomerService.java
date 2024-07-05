@@ -82,22 +82,45 @@ public class CustomerService {
         customerRepository.deleteById(customerId);
     }
     public Customer updateCustomer(UUID customerId, Customer customer) throws NotFoundException {
-        Customer updatedCustomer = customerRepository.findById(customerId).orElseThrow(() -> new NotFoundException("Customer not found.."+customerId));
+        Customer existingCustomer = customerRepository.findById(customerId).orElseThrow(() -> new NotFoundException("Customer not found.."+customerId));
 
-        updatedCustomer.setCustomerName(customer.getCustomerName());
-        updatedCustomer.setCustomerEmail(customer.getCustomerEmail());
-        updatedCustomer.setCustomerBillingAddress(customer.getCustomerBillingAddress());
-        updatedCustomer.setCustomerShippingAddress(customer.getCustomerShippingAddress());
+        existingCustomer.setCustomerName(customer.getCustomerName());
+        existingCustomer.setCustomerEmail(customer.getCustomerEmail());
+        existingCustomer.setCustomerBillingAddress(customer.getCustomerBillingAddress());
+        existingCustomer.setCustomerShippingAddress(customer.getCustomerShippingAddress());
 
-        CustomerAddress updatedCustomerAddress = customerAddressRepository.findById(customer.getCustomerAddressList().get(0).getCustomerAddressId()).orElseThrow(() -> new NotFoundException("Customer Address not found.." + customer.getCustomerAddressList().get(0).getCustomerAddressId()));
+        //for single address
+        /*CustomerAddress existingCusAdd = getCustomerAddress(customer, existingCustomer);
+        customerAddressRepository.save(existingCusAdd);*/
+        //for multiple address
+        List<CustomerAddress> existingCusAddList = getCustomerAddressList(customer, existingCustomer);
+        customerAddressRepository.saveAll(existingCusAddList);
 
-        updatedCustomerAddress.setDoorNo(customer.getCustomerAddressList().get(0).getDoorNo());
-        updatedCustomerAddress.setStreetName(customer.getCustomerAddressList().get(0).getStreetName());
-        updatedCustomerAddress.setCity(customer.getCustomerAddressList().get(0).getCity());
-        updatedCustomerAddress.setLayoutName(customer.getCustomerAddressList().get(0).getLayoutName());
-        updatedCustomerAddress.setPinCode(customer.getCustomerAddressList().get(0).getPinCode());
+        return customerRepository.save(existingCustomer);
+    }
 
-        customerAddressRepository.save(updatedCustomerAddress);
-        return customerRepository.save(updatedCustomer);
+    private List<CustomerAddress> getCustomerAddressList(Customer customer, Customer existingCustomer) {
+        List<CustomerAddress> existingCusAddList = existingCustomer.getCustomerAddressList();
+        List<CustomerAddress> customerAddressList = customer.getCustomerAddressList();
+        for (int i = 0; i < customerAddressList.size(); i++) {
+            CustomerAddress existingCusAdd = existingCusAddList.get(i);
+            existingCusAdd.setDoorNo(customerAddressList.get(i).getDoorNo());
+            existingCusAdd.setStreetName(customerAddressList.get(i).getStreetName());
+            existingCusAdd.setCity(customerAddressList.get(i).getCity());
+            existingCusAdd.setLayoutName(customerAddressList.get(i).getLayoutName());
+            existingCusAdd.setPinCode(customerAddressList.get(i).getPinCode());
+        }
+        return existingCusAddList;
+    }
+
+    private static CustomerAddress getCustomerAddress(Customer customer, Customer existingCustomer) {
+        CustomerAddress existingCusAdd = existingCustomer.getCustomerAddressList().get(0);
+
+        existingCusAdd.setDoorNo(customer.getCustomerAddressList().get(0).getDoorNo());
+        existingCusAdd.setStreetName(customer.getCustomerAddressList().get(0).getStreetName());
+        existingCusAdd.setCity(customer.getCustomerAddressList().get(0).getCity());
+        existingCusAdd.setLayoutName(customer.getCustomerAddressList().get(0).getLayoutName());
+        existingCusAdd.setPinCode(customer.getCustomerAddressList().get(0).getPinCode());
+        return existingCusAdd;
     }
 }

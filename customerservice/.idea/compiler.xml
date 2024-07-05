@@ -11,6 +11,7 @@
         <module name="customerservice" />
         <module name="productservice" />
         <module name="cartservice" />
+        <module name="orderservice" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
       <module name="cartservice" options="-parameters" />
       <module name="customerservice" options="-parameters" />
       <module name="inventoryservice" options="-parameters" />
+      <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />
     </option>
   </component>
