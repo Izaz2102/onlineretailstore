@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"customerName\": \"azeema\",\r\n    \"customerEmail\": \"azeema@gmail.com\",\r\n    \"customerBillingAddress\": \"azeema\",\r\n    \"customerShippingAddress\": \"azeema\",\r\n    \"customerAddressList\" : [\r\n        {\r\n            \"doorNo\": \"8-4-369-333\",\r\n            \"streetName\": \"SITE 3\",\r\n            \"layoutName\": \"azeema 1\",\r\n            \"city\" : \"azeema 1\",\r\n            \"pinCode\" : \"500018\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"customerName\": \"Abraar\",\r\n    \"customerEmail\": \"abraar@gmail.com\",\r\n    \"customerBillingAddress\": \"abraar\",\r\n    \"customerShippingAddress\": \"abraar\",\r\n    \"customerAddressList\" : [\r\n        {\r\n            \"doorNo\": \"8-4-369-333\",\r\n            \"streetName\": \"SITE 3\",\r\n            \"layoutName\": \"azeema 1\",\r\n            \"city\" : \"azeema 1\",\r\n            \"pinCode\" : \"500018\"\r\n        },\r\n        {\r\n            \"doorNo\": \"6-25\",\r\n            \"streetName\": \"waddicherla\",\r\n            \"layoutName\": \"Lingala Ghanpur\",\r\n            \"city\" : \"Jangaon\",\r\n            \"pinCode\" : \"506303\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -61,14 +61,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"customerId\": \"3d59c7fa-cf18-45b6-9e27-42876151eddc\",\r\n        \"customerName\": \"azeema izaz\",\r\n        \"customerEmail\": \"azeemaizaz@gmail.com\",\r\n        \"customerBillingAddress\": \"azeema izaz\",\r\n        \"customerShippingAddress\": \"azeema izaz\",\r\n        \"customerAddressList\": [\r\n            {\r\n                \"customerAddressId\": \"27e9a12a-2d0f-4f72-86d6-a943b71b886f\",\r\n                \"doorNo\": \"8-4-369-333\",\r\n                \"streetName\": \"SITE 3\",\r\n                \"layoutName\": \"azeema izaz1\",\r\n                \"city\": \"azeema izaz1\",\r\n                \"pinCode\": \"500018\"\r\n            }\r\n        ]\r\n    }",
+							"raw": "{\r\n        \"customerId\": \"7775f50d-4fef-4b9f-a507-6ce9d99cdc17\",\r\n        \"customerName\": \"Izaz\",\r\n        \"customerEmail\": \"Izaz@gmail.com\",\r\n        \"customerBillingAddress\": \"Izaz\",\r\n        \"customerShippingAddress\": \"Izaz\",\r\n        \"customerAddressList\": [\r\n            {\r\n                \"customerAddressId\": \"c525a169-37f7-4c82-a11c-feeefd17e34a\",\r\n                \"doorNo\": \"8-4-369-333\",\r\n                \"streetName\": \"SITE 3\",\r\n                \"layoutName\": \"izaz 1\",\r\n                \"city\": \"izaz 1\",\r\n                \"pinCode\": \"500018\"\r\n            },\r\n            {\r\n                \"customerAddressId\": \"f48b9661-b787-40c2-87e5-fa0a52fbfa23\",\r\n                \"doorNo\": \"6-25\",\r\n                \"streetName\": \"ahmed\",\r\n                \"layoutName\": \"ahmed\",\r\n                \"city\": \"ahmed\",\r\n                \"pinCode\": \"506303\"\r\n            }\r\n        ]\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8001/ors/api/v1/customers/updateCustomerById/3d59c7fa-cf18-45b6-9e27-42876151eddc"
+						"url": "http://localhost:8001/ors/api/v1/customers/updateCustomerById/7775f50d-4fef-4b9f-a507-6ce9d99cdc17"
 					},
 					"response": []
 				}
@@ -113,8 +113,13 @@
 						"method": "GET",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": "http://localhost:8002/ors/api/v1/products/getAllProducts"
 					},
@@ -212,6 +217,115 @@
 						"method": "DELETE",
 						"header": [],
 						"url": "http://localhost:8003/ors/api/v1/inventory/deleteInventory/62eac6b0-b79f-4139-a98b-fd3992f0bfe6"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "addCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:8004/ors/api/v1/cart/addCart"
+					},
+					"response": []
+				},
+				{
+					"name": "getCart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8004/ors/api/v1/cart/getCart/6006c0fc-5a61-4f2d-a74d-8282d29753dc"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cartId\": \"6006c0fc-5a61-4f2d-a74d-8282d29753dc\",\r\n    \"lineItemsList\": [\r\n        {\r\n            \"productId\": \"414f7b3e-d5c2-4b2e-9a8a-6cf81da3c864\",\r\n            \"productName\": \"IPhone 2\",\r\n            \"quantity\": 22,\r\n            \"price\": 15000000.0\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8004/ors/api/v1/cart/updateCart/6006c0fc-5a61-4f2d-a74d-8282d29753dc"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCartById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8004/ors/api/v1/cart/deleteCartById/6006c0fc-5a61-4f2d-a74d-8282d29753dc"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "addOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineItemsList\": [\r\n        {\r\n        \"productId\": \"414f7b3e-d5c2-4b2e-9a8a-6cf81da3c864\",\r\n        \"productName\": \"Mac book\",\r\n        \"quantity\": 1,\r\n        \"price\": 520.75\r\n        },\r\n         {\r\n        \"productId\": \"414f7b3e-d5c2-4b2e-9a8a-6cf81da3c864\",\r\n        \"productName\": \"boult\",\r\n        \"quantity\": 10,\r\n        \"price\": 20.75\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8005/ors/api/v1/orders/addOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lineItemsList\": [\r\n        {\r\n        \"productId\": \"414f7b3e-d5c2-4b2e-9a8a-6cf81da3c864\",\r\n        \"productName\": \"Mac book\",\r\n        \"quantity\": 1,\r\n        \"price\": 520.75\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8005/ors/api/v1/orders/updateOrder/b3e5be6f-b3af-491d-baf0-bee5bf2bfacc"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteOrderById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8001/ors/api/v1/orders/deleteOrderById/"
+					},
+					"response": []
+				},
+				{
+					"name": "getOrder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8005/ors/api/v1/orders/getOrder/b3e5be6f-b3af-491d-baf0-bee5bf2bfacc"
 					},
 					"response": []
 				}

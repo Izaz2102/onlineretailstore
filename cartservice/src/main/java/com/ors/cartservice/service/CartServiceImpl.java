@@ -22,14 +22,9 @@ public class CartServiceImpl implements CartService{
     @Autowired
     private LineItemRepository lineItemRepository;
     @Override
-    public Cart addCart(Cart cart) {
-        List<Cart> cartList = cartRepository.findAll();
-        //List<LineItem> existngLineItemList = lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId()));
-        //Metadata UUIDConverter = null;
-        //UUID uuid = Converter.convert(cartList.get(0).getLineItemsList().get(0).getLineItemId());
-        //Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(UUIDConverter.getUUID(cartList.get(0).getLineItemsList().get(0))).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
-
-        //Optional<LineItem> existngLineItemList = Optional.ofNullable(lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
+    public Cart addCart() {
+    //public Cart addCart(Cart cart) {
+        /*List<Cart> cartList = cartRepository.findAll();
         Optional<LineItem> existngLineItemList = Optional.empty();
         if(!cartList.isEmpty()){
             existngLineItemList = Optional.ofNullable(lineItemRepository.findById(cartList.get(0).getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found.." + cart.getLineItemsList().get(0).getLineItemId())));
@@ -51,7 +46,10 @@ public class CartServiceImpl implements CartService{
             }
             return cartRepository.save(cart);
         }
-        return cartList.get(0);
+        return cartList.get(0);*/
+        Cart cart = new Cart();
+        cartRepository.save(cart);
+        return cart;
     }
 
     @Override
@@ -71,7 +69,7 @@ public class CartServiceImpl implements CartService{
 
     @Override
     public Cart updateCart(UUID cartId, Cart cart) {
-        LineItem updatedLineItem = lineItemRepository.findById(cart.getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found"));
+        /*LineItem updatedLineItem = lineItemRepository.findById(cart.getLineItemsList().get(0).getLineItemId()).orElseThrow(() -> new EntityNotFoundException("LineItem not found"));
 
         updatedLineItem.setProductId(cart.getLineItemsList().get(0).getProductId());
         updatedLineItem.setProductName(cart.getLineItemsList().get(0).getProductName());
@@ -79,6 +77,10 @@ public class CartServiceImpl implements CartService{
         updatedLineItem.setPrice(cart.getLineItemsList().get(0).getPrice());
 
         lineItemRepository.save(updatedLineItem);
-        return cartRepository.save(cart);
+        return cartRepository.save(cart);*/
+        Cart existingCart = cartRepository.findById(cartId).orElseThrow(() -> new EntityNotFoundException("Cart not found.."+cartId));
+        existingCart.getLineItemsList().add(cart.getLineItemsList().get(0));
+        cart.getLineItemsList().get(0).setCart(existingCart);
+        return cartRepository.save(existingCart);
     }
 }

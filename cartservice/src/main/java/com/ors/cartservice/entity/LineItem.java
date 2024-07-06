@@ -6,7 +6,7 @@ import lombok.*;
 
 import java.util.UUID;
 
-@Entity
+@Entity(name = "cart_line_item")
 @NoArgsConstructor
 @Setter
 @Getter
@@ -21,7 +21,8 @@ public class LineItem {
     private int quantity;
     private double price;
 
-    //@ManyToOne(cascade = CascadeType.PERSIST)
-    //@JoinColumn(name = "cart")
-    //private Cart cart;
+    @ManyToOne()
+    @JoinColumn(name = "cart_id")
+    @JsonIgnore
+    private Cart cart;
 }
