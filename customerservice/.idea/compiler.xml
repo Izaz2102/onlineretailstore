@@ -7,9 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eurekaserver" />
+        <module name="productservice" />
         <module name="inventoryservice" />
         <module name="customerservice" />
-        <module name="productservice" />
+        <module name="gateway" />
         <module name="cartservice" />
         <module name="orderservice" />
       </profile>
@@ -19,6 +21,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cartservice" options="-parameters" />
       <module name="customerservice" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="inventoryservice" options="-parameters" />
       <module name="orderservice" options="-parameters" />
       <module name="productservice" options="-parameters" />

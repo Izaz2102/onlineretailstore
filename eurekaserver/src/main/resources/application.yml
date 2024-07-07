@@ -1,0 +1,31 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: OrsEurekaServer
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  instances:
+    hostname: localhost
+    non-secure-port: ${server.port}
+    instanceId: client-${random.uuid}
+    prefer-ip-address: true
+
+  server:
+    enable-with-preservation: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instances.hostname}:${eureka.instances.non-secure-port}/eureka/
