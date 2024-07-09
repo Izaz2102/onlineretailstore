@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
-
+//ms
+//@RefreshScope
 @RestController
 @RequestMapping("/ors/api/v1/cart")
 public class CartController {

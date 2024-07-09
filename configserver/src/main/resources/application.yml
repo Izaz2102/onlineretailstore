@@ -1,0 +1,12 @@
+server:
+  port: 8007
+spring:
+  application:
+    name: Config-Server
+  cloud:
+    config:
+      server:
+        git:
+          uri: ""
+          default-label: master
+          clone-on-start: true

@@ -8,12 +8,19 @@ import lombok.*;
 import java.util.UUID;
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 @Entity
 public class CustomerCart {
     @Id
     private UUID customerId;
     private UUID cartId;
+
+    public CustomerCart(UUID customerId, UUID cartId) {
+        this.customerId = customerId;
+        this.cartId = cartId;
+    }
+    public CustomerCart() {
+    }
 }
