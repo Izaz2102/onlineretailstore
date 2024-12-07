@@ -1,14 +1,16 @@
 package com.ors.productservice.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "product")
+@Entity(name = "product")
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +26,6 @@ public class Product {
     private String productDescription;
 
     @Column(name = "product_price")
-    private String productPrice;
+    private double productPrice;
 
 }
