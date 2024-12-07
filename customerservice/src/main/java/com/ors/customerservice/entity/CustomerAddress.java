@@ -2,8 +2,11 @@
 package com.ors.customerservice.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.UUID;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 @Entity
 @NoArgsConstructor
 @Getter
